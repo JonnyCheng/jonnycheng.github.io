@@ -34,7 +34,7 @@ body {
 }
 
 a {
-  color: #268bd2;
+  color: #515151;
   text-decoration: none;
   
   &:hover,
@@ -312,10 +312,6 @@ span {
     a {
       color: #aaa;
       font-weight: 300;
-      text-transform: lowercase;
-      -webkit-transition: all .2s ease;
-      -moz-transition: all .2s ease;
-      transition: all .2s ease;
 
       &:hover,
       &:focus {
@@ -394,6 +390,34 @@ span {
     padding: 0;
     margin: 0;
   }
+}
+
+.disabled span,.current-page {
+  color: #ddd;
+}
+
+.category,.category-item {
+  list-style: none;
+}
+
+@mixin prefix_name($property,$value) {
+    -webkit-#{$property}    : $value;
+    -moz-#{$property}       : $value;
+    -o-#{$property}         : $value;
+    #{$property}            : $value;
+}
+
+.fade-in {
+    @include prefix_name(animation,fadeIn 1s);
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity : 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .highlight .hll { background-color: #ffffcc }
