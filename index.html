@@ -29,14 +29,14 @@ layout: default
   {% if paginator.previous_page %}
     <p class="previous">
       {% if paginator.previous_page == 1 %}
-        <a href="/">Previous</a>
+        <a href="/">&lArr;</a>
       {% else %}
-        <a href="{{ paginator.previous_page_path }}">Previous</a>
+        <a href="{{ paginator.previous_page_path }}">&lArr;</a>
       {% endif %}
     </p>
   {% else %}
     <p class="previous disabled">
-      <span>Previous</span>
+      <span>&lArr;</span>
     </p>
   {% endif %}
 
@@ -62,11 +62,11 @@ layout: default
 
   {% if paginator.next_page %}
     <p class="next">
-      <a href="{{ paginator.next_page_path }}">Next</a>
+      <a class="next-a" href="{{ paginator.next_page_path }}">&rArr;</a>
     </p>
   {% else %}
     <p class="next disabled">
-      <span>Next</span>
+      <span class="next-span">&rArr;</span>
     </p>
   {% endif %}
 
