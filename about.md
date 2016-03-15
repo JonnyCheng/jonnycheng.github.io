@@ -4,4 +4,4 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. 
+This is the about... 
