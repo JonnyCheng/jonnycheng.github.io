@@ -3,7 +3,7 @@ layout: default
 ---
 <header class="masthead">        
   <h1 class="masthead-title">
-    <a href="{{ site.baseurl }}/">Jonny<span>&#39;s blog</span></a>
+    <a href="{{ site.baseurl }}/">Jony<span>&#39;s blog</span></a>
   </h1>
   <nav class="masthead-nav">
     {% for nav in site.nav %}
@@ -15,9 +15,9 @@ layout: default
 <div class="content list">
 {% for post in paginator.posts %}
   <div class="list-item">
-    <h2 class="list-post-title">
+    <h3 class="list-post-title">
       <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-    </h2>
+    </h3>
     <div class="list-post-date">
       <time>{{ post.date | date_to_string }}</time>
     </div>

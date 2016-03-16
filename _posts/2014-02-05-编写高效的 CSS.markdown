@@ -1,0 +1,102 @@
+---
+layout: post
+title:  "编写高效的CSS"
+date:   2014-02-05 +0800
+categories: develop
+---
+诚然我很少从浏览器渲染速度的角度去考虑书写CSS效率的问题。
+
+速度愈快，用户体验愈好，这明显是浏览器厂商应该关心的问题。Mozilla在一篇关于最佳实践的文章中有所说明。一直推崇打造更快网络体验的Google也在文章中有所提及。
+
+下面我们来了解其中的主要观点，共同探讨其可行性。
+
+自右向左
+
+关于浏览器是如何读取CSS选择器最重要的一点就是自右向左读，例如在ul> li a[title=''home]中首先被解析的就是a[title="home"]。它作为被浏览器选择的元素，也被称作“关键选择器”。
+
+ID最高效，Universal最低效。
+
+四种关键选择器解析速度由快到慢依次为：id，class，tag和universal。
+{% highlight css %}
+    #main-navigation {   }      /* ID (最快) */
+
+    body.home #page-wrap {   }  /* ID */
+
+    .main-navigation {   }      /* Class */
+
+    ul li a.current {   }       /* Class */
+
+    ul {   }                    /* Tag */
+
+    ul li a {  }                /* Tag */
+
+    * {   }                     /* Universal (最慢) */
+
+    #content [title='home']     /* Universal */
+{% endhighlight %}
+
+当我们将自右向左与关键选择器的概念结合后发现下面的选择器并不是很有效率。
+
+{% highlight css %}
+#main-nav > li {   }  /* 比想象的要慢 */
+{% endhighlight %}
+
+反直觉的东西通常让我们感觉怪怪的，因为我们潜意识觉得id很高效，浏览器会快速找到id与它的子元素li。但现实是相对低效的li首先被解析。
+切忌tag-qualify
+
+切忌这样写：
+
+{% highlight css %}
+ul#main-navigation {  }
+{% endhighlight %}
+
+id都是唯一的，所以书写时不必再跟标签名，不然只能画蛇添足。
+尽量避免跟类名。类名不唯一，所以理论上可以在多个不同元素上添加类名去实现效果。如果你要依赖元素去实现不同的效果，那你可能需要tag-qualify（例如：li.first），但很少见，总之切忌tag-qualify。
+子代选择器最低效
+
+>David Hyatt: 
+>
+>The descendant selector is the most expensive selector in CSS. It is dreadfully expensive — especially if the selector is in the Tag or Universal Category.
+
+换句话说，下面的选择器是极其低效的：
+
+{% highlight css %}
+html body ul li a {  }
+{% endhighlight %}
+ 
+匹配失败的选择器更高效
+
+我不确定是否能从中受益，因为在你的CSS中有太多未匹配的选择器显然是奇怪的。但它也是值得注意的，选择器自右向左解析时如果匹配失败便停止，因此比被完全解析消耗更少资源。
+思考为何所写
+
+考虑一下
+
+{% highlight css %}
+#main-navigation li a { font-family: Georgia, Serif; }
+{% endhighlight %}
+ 
+Font-family是可以继承的，所以 不必多此一举（除非你要改变字体）。下面的方法会更有效。
+
+{% highlight css %}
+#main-navigation { font-family: Georgia, Serif; }
+{% endhighlight %}
+ 
+CSS3效率问题
+
+>来自David Hyatt的坏消息：
+>
+>The sad truth about CSS3 selectors is that they really shouldn’t be used at all if you care about page performance.
+
+CSS3选择器（例如：:nth-child）在帮助我们匹配我们需要的元素同时保持整洁且富有语义的样式方面做的很棒。但这些奇特的选择器也耗费了浏览器大量资源。
+
+那怎么办，难道我们不去使用他们么？接下来我们讨论一点可行性的问题。。。
+
+可行性
+
+记得文章开头Mozilla的那篇文章么？差不多有10年之久。实际上10年前的电脑运算速度是很慢的。那时候我便觉得这东西很重要。十年前21岁的我连CSS是什么都不知道，所以我就不再跟你回忆往事了，但我感觉到我们没有在聊浏览器渲染效率的事，因为它不再是什么大问题了。
+
+我的想法就是：我们提及的最好实践无论怎样都是有意义的。它们不会限制你的能力所以你可以遵守规则这个规则。但不必教条。如果你以前从未考虑过这些，恰好又需要提升网站性能，那么它对你优化CSS很有价值。如果你的网站性能还可以，那你大可不用理它，以后注意是了。
+
+极速，无用
+
+众所周知id是有效的选择器。如果你想打造渲染效率最高的页面，你可以给每个元素都加一个单独的id，然后一一添加样式。结果就是超快，超可笑。因为那样完全丧失语义化也不利于以后维护。在一些底层核心性能很高的网站上你也很难看到这种说法。所以我认为不该为效率而牺牲语义化可读性与可维护性。

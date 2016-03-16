@@ -8,12 +8,17 @@
 # Site settings
 title: Jonny Cheng
 email: jonnycheng6@gmail.com
-description: > # it is jonny's blog.
+description: > # it is jony's blog.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://127.0.0.1:4000/" # the base hostname & protocol for your site
+url: "http://jony.im/" # the base hostname & protocol for your site
 
 # Build settings
+highlighter: pygments
 markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids:      true
+  auto_id_prefix: 'id-'
 
 # Navigation
 nav:

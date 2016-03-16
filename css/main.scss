@@ -340,7 +340,6 @@ span {
 &-date {
     margin-bottom: 2rem;
     font-size: .75rem;
-    text-transform: uppercase;
 }
 }
 
@@ -354,13 +353,13 @@ span {
       &:hover,
       &:focus {
         text-decoration: none;
+        color: #aaa;
     }
-}
+  }
 }
 &-post-date {
     margin-bottom: 1rem;
     font-size: .75rem;
-    text-transform: uppercase;
 }
 }
 
@@ -399,7 +398,12 @@ span {
 .category,.category-item {
   list-style: none;
 }
-
+.next-span {
+  position: relative;
+  top: -1px;
+  left: -4px;
+  width: 10px;
+}
 @mixin prefix_name($property,$value) {
     -webkit-#{$property}    : $value;
     -moz-#{$property}       : $value;
