@@ -6,9 +6,9 @@ categories: develop
 ---
 无论PC端还是移动端，jQuery都长期伴随着大多数的前端开发者。简洁的对象构建方式，方便的方法调用，出色的兼容性表现决定了jQuery良好的口碑。
 
-jQuery核心就是从DOM中匹配元素后进行操作，例如：$().css();
+jQuery核心就是从DOM中匹配元素后进行操作，例如：`$().css()`;
 
-jQuery奇妙之处在于没有用new进行实例化对象。例如常规的JS实例化一个对象需要如下方法：
+jQuery奇妙之处在于没有用`new`进行实例化对象。例如常规的JS实例化一个对象需要如下方法：
 
 {% highlight javascript %}
 var aQuery = function(selector, context) {
@@ -23,7 +23,7 @@ var a = new aQuery();
 a.name();
 {% endhighlight %}
                 
-但jQuery明显就不是这样定义的。jQuery通过原型传递解决了既能隔离作用域还能使用jQuery圆形对象的作用域问题。
+但jQuery明显就不是这样定义的。jQuery通过原型传递解决了既能隔离作用域还能使用jQuery原型对象的作用域问题。
 
 {% highlight javascript %}
 var aQuery = function(selector, context) {
@@ -44,9 +44,9 @@ aQuery.prototype.init.prototype = aQuery.prototype;
 console.log(aQuery().name()) //20
 {% endhighlight %}
 
-可见实现的关键在于aQuery.prototype.init.prototype = aQuery.prototype;。
+可见实现的关键在于`aQuery.prototype.init.prototype = aQuery.prototype;`。
 jQuery的链式调用又是怎么回事呢？
-通过扩展原型方法并通过return this的形式来实现链式调用，利用JS的工厂模式对同一DOM对象的操作指定统一对象。
+通过扩展原型方法并通过`return this`的形式来实现链式调用，利用JS的工厂模式对同一DOM对象的操作指定统一对象。
 
 {% highlight javascript %}
 aQuery().init().name()
@@ -75,7 +75,7 @@ jQuery的基础就是查询，正如源码中不时出现的正则表达式一�
 rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,
 {% endhighlight %}  
                 
-将正则一分为二，第一段^(?:\s*(<[\w\W]+>)[^>]*，第二段#([\w-]*))$，综合起来可以理解为匹配HTML标签与ID表达式。
+将正则一分为二，第一段`^(?:\s*(<[\w\W]+>)[^>]*`，第二段`#([\w-]*))$`，综合起来可以理解为匹配HTML标签与ID表达式。
 jQuery选择器处理方式有以下九种：
 
 {% highlight javascript %}
@@ -95,7 +95,7 @@ $("<div>", {
 $($(‘.test’))
 {% endhighlight %}  
                 
-本质上讲jQuery.fn.init构建的出来的对象，就是jQuery对象
+本质上讲`jQuery.fn.init`构建的出来的对象，就是jQuery对象
 
 {% highlight javascript %}
 init: function( selector, context, rootjQuery ) {

@@ -10,12 +10,9 @@ permalink: /article/
     {% for posts in category %}
       {% for post in posts %}
         <li>
-            <h3 class="list-post-title">
-                <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+            <h3 class="category-list-post-title">
+                <time class="category-list-post-time">{{ post.date |date:"%Y-%m-%d" }}</time> <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a> 
             </h3>
-            <div class="list-post-date">
-                <time>{{ post.date |date:"%Y-%m-%d" }}</time>
-            </div>
         </li>
       {% endfor %}
     {% endfor %}

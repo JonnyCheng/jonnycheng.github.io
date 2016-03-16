@@ -1,6 +1,5 @@
 ---
 layout: default
-comments: true
 ---
 <header class="masthead">
   <h1 class="masthead-title--small">
@@ -10,7 +9,7 @@ comments: true
 <div class="content post">
   <h1 class="post-title">{{ page.title }}</h1>
   <div class="post-date">
-    <time>{{ page.date | date_to_string }}</time>
+    <time>{{ page.date | date:"%Y-%m-%d" }}</time>
   </div>
   {{ content }}
 </div>

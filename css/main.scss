@@ -336,10 +336,12 @@ span {
 .post {
   &-title {
     margin-bottom: .25rem;
+    text-align: center;
 }
 &-date {
     margin-bottom: 2rem;
     font-size: .75rem;
+    text-align: center;
 }
 }
 
@@ -397,6 +399,19 @@ span {
 
 .category,.category-item {
   list-style: none;
+  color: #333;
+  text-decoration: none;
+}
+.category-list-post-title a{
+  color: #333;
+  text-decoration: underline;
+}
+.category-list-post-title a:hover {
+  color: #aaa;
+  text-decoration: underline;
+}
+.category-list-post-time {
+  font-size: 18px;
 }
 .next-span {
   position: relative;
