@@ -24,8 +24,8 @@ kramdown:
 nav:
   - name:           "About"
     href:           "/about"
-  - name:           "Articles"
-    href:           "/article"
+  - name:           "Category"
+    href:           "/category"
 # Sass
 sass:
   style:            :compressed

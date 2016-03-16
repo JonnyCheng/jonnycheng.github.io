@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Articles
-permalink: /article/
+title: Category
+permalink: /category/
 ---
 
 {% for category in site.categories %}

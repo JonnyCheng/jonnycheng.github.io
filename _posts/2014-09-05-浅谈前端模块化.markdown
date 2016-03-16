@@ -1,0 +1,123 @@
+---
+layout: post
+title:  "浅谈前端模块化"
+date:   2014-09-05 +0800
+categories: develop
+---
+余闲之际写点东西，只为清晰。
+
+关于模块化
+
+将系统代码解耦成功能单一且可替换的模块就是模块化思想的实质，方便二次开发及系统维护。由于前端的多层级结构，只对JavaScript（行为层）模块化显然是不完整的，CSS与模版也同样需要模块化。讨论最多的JavaScript模块化也不仅仅只是主流的异步模块化。将同步代码改为异步，通过依赖关系逐一加载，不仅麻烦，如果模块众多依赖关系复杂便会严重影响网站性能。模块化考虑的是如何将代码拆分，上线时就要面临资源的合并打包问题。因为每个模块都是独立的，而且采用匿名定义的方式，所以每次新增模块都要修改配置项。模块化的初衷是为了降低维护成本，但在某种程度上适得其反。
+
+AMD与CommonJS
+
+AMD
+
+异步模块定义（Asynchronous Module Definition）是RequireJS在推广过程中对模块定义的一种规范化产出。AMD的API提供了定义模块，以及异步加载该模块的依赖机制。 
+
+`define()`函数 `define(id?,dependencies?,factory);` 
+
+AMD中用define来定义一个模块，包含了三个参数，前两个是可选。 
+
+`id`:是个字符串，指定定义模块的名字，可选。如果没提供该参数，模块名默认为加载器指定脚本的名字。 
+
+`dependencies`:是个数组，定义所依赖模块的数组，可选。 
+
+`factory`:工厂方法，是模块初始化要执行的函数或对象。
+
+如果是函数，应该只被执行一次。如果是对象，此对象应为模块的输出值。
+`define(["a", "b"], function(a,b) { ... }) // AMD的标准写法`
+
+CommonJS
+
+JavaScript本身不支持模块，至少目前是不支持，要等到EcmaScript6才会普及。于是CommonJS被创造出来，CommonJS是个有志于构建JavaScript生态系统的组织，CommonJS定义了服务器端模块的规范，Node.js便采用了这个规范。与AMD不同，CommonJS试图覆盖更多，IO、文件系统等等。
+
+一个CommonJS模块就是一个段可重用的JS，导出特定的对象给依赖它的对象使用。每个CommonJS包括两个部分，一个exports自由变量，它包含模块希望提供给其他模块的对象；一个require函数，让模块用来导入其他模块。
+
+require()与exports的用法：
+ 
+{% highlight javascript %}               
+var lib = require('lib');     //lib是我们需要的一个库
+function foo(){               //模块的一些行为
+    lib.log('Hello World!');
+}
+exports.foo = foo;            //把foo暴露给其他模块
+{% endhighlight %}
+
+exports的基本用法：
+
+{% highlight javascript %}  
+function apple(){             //定义希望暴露的行为
+    this.foo = function(){
+            console.log('Hello foo');
+    }
+
+    this.bar = function(){
+            console.log('Hello bar');
+    }
+}
+ 
+exports.apple = apple;        //把apple暴露给其它模块
+
+var apple = require('./apple').apple,   //一个使用了 'apple' 的应用，相对于使用文件与模块文件所在的同一目录路径获取模块
+test   = new apple();
+ 
+test.bar();                   //'Hello bar'
+{% endhighlight %}
+
+以上可知，AMD与CommonJS都是为JavaScript模块化所定义的API。区别在于CommonJS起初是为server端设计的，它是同步模式，为了更好的适应浏览器，诞生了AMD，而RequrieJS只不过是AMD的一个最广泛的实现。
+
+优化工具
+
+RequireJS提供了一款优化工具，它是r.js的一部分，主要做了以下两件事：
+
+1.默认使用UglifyJS合并压缩脚本到build layers上。如果是Java环境则使用Closure Compiler；
+
+2.通过使用@import引用内连CSS文件并且删除注释，以此对CSS进行优化。
+
+r.js是一个遵循AMD规范的命令行脚本工具，有两个主要功能：
+
+1.在Node&Rhion环境中运行基于AMD的工程；
+
+2.内含RequireJS优化工具。
+
+优化工具只会合并已被传入顶层require&define数组中的模块，所以，它找不到那些通过变量名加载的模块。
+例如：
+
+{% highlight javascript %} 
+//通过变量名加载的模块，不会被合并。
+var mods = someCondtion ? ['a','b']:['c','d'];
+require(mods);
+
+//以下两种方式可以被合并
+require(['a','b']);
+//or
+define(['a','b'],function(a,b){});
+{% endhighlight %}
+
+由此可知，js相关文件只有遵循AMD规范才可以被r.js运行，进而被RequireJS优化工具打包。
+
+以下是RequireJS打包工具配置文件的基本用法，在这里简单说一下：
+
+首先要写好一个json格式的配置文件zip.js，有以下常用属性：
+
+{% highlight javascript %} 
+{
+    // 根目录
+    appDir: "root",
+    // 脚本相对于工程的根目录
+    baseUrl: "js/lib",
+    // 打包输出的目录
+    dir: "pc",
+    // 需要打包的js模块 name以baseUrl为相对路径
+    modules: [
+        {name: 'main'},
+        ...
+    ]
+    // 通过正则排除文件
+    "fileExclusionRegExp": /^\./
+}
+{% endhighlight %}
+
+然后，运行`node r.js -o zip.js`。
