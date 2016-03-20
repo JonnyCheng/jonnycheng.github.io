@@ -1,1 +1,1 @@
-# it is my blog
+Just jot down the ideas.
