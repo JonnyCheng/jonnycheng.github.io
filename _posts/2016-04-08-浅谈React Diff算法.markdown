@@ -12,7 +12,7 @@ React中，render的结果仅仅是轻量级的JavaScript对象，将之称为�
 
 为何要使用虚拟DOM？只是因为真实DOM元素冗余。举个例子：
 
-![真实DOM](../img/1.jpg)
+![真实DOM](./img/1.jpg)
 
 因此相比操作真实DOM，操作JavaScript对象简单得多也会快得多。
 
@@ -40,7 +40,7 @@ renderB: <Content />
 
 由此逻辑可知React是通过逐层diff,简单粗暴。
 
-![真实DOM](../img/react1.png)
+![真实DOM](./img/react1.png)
 
 结束diff过程，组件或节点会根据状态的改变而重新render，这期间DOM也只会更新一次。
 
