@@ -6,7 +6,7 @@ categories: develop
 ---
 React是Facebook&Instagram开发构建用户界面的类库。开发React的初衷是解决大型复杂UI应用性能问题。接下来，我会浅谈一下React是如何完成这项任务的。
 
-####虚拟DOM
+虚拟DOM
 
 React中，render的结果仅仅是轻量级的JavaScript对象，将之称为虚拟DOM。
 
@@ -16,7 +16,7 @@ React中，render的结果仅仅是轻量级的JavaScript对象，将之称为�
 
 因此相比操作真实DOM，操作JavaScript对象简单得多也会快得多。
 
-####Diff算法
+Diff算法
 
 React的设计原则是状态决定UI，不同状态相当于不同的页面，通过算法对DOM状态对比进而完成render。
 
