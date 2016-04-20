@@ -4,7 +4,7 @@ title:  "浅谈React Diff算法"
 date:   2016-04-08 +0800
 categories: develop
 ---
-React是Facebook&Instagram开发构建用户界面的类库。开发React的初衷是解决大型复杂UI应用性能问题。接下来，我会浅谈一下React是如何完成这项任务的。
+React是Facebook&Instagram开发构建用户界面的类库。开发React的初衷是为了解决大型复杂UI应用性能问题。接下来，我会浅谈一下React是如何完成这项任务的。
 
 虚拟DOM
 
