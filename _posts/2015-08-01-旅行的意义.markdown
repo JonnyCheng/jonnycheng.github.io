@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "旅行的艺术（一）"
+title:  "旅行的艺术"
 date:   2015-08-01 +0800
 categories: reading
 ---
