@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-My name is Jony Cheng, a front-end software engineer at Beijing. I’ve been working on the web professionally since 2013.
+My name is Jony Cheng, a front-end software engineer in Beijing. I’ve been working on the web professionally since 2013.
 
 Jony's blog is a place where I jot down the ideas I think about outside of work.
 
