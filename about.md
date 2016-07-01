@@ -12,12 +12,10 @@ I prefer writing about more abstract topics, occasionally I’ll bring up a spec
 
 If you’re interested in my blog, let me know.
 
-> #### Contact
+> ##### Facebook : [JonnyCheng](https://www.facebook.com/michealcheng6)
 >
-> Facebook : [JonnyCheng](https://www.facebook.com/michealcheng6)
+> ##### Instagram : [JonnyCheng](https://www.instagram.com/jonnycheng/)
 >
-> Instagram : [JonnyCheng](https://www.instagram.com/jonnycheng/)
->
-> Email : jonnycheng6@gmail.com
+> ##### Email : jonnycheng6@gmail.com
 
 
