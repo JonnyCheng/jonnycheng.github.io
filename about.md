@@ -17,5 +17,3 @@ If you’re interested in my blog, let me know.
 > Instagram : [JonnyCheng](https://www.instagram.com/jonnycheng/)
 >
 > Email : jonnycheng6@gmail.com
-
-
