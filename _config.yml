@@ -47,7 +47,7 @@ defaults:
 
 # Gems
 gems: [jekyll-paginate]
-paginate: 6
+paginate: 10
 paginate_path: "/page:num"
 
 # comments
