@@ -22,9 +22,9 @@ kramdown:
 
 # Navigation
 nav:
-  - name:           "About"
+  - name:           "关于"
     href:           "/about"
-  - name:           "Category"
+  - name:           "文章分类"
     href:           "/category"
 # Sass
 sass:
