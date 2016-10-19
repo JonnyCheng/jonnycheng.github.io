@@ -60,7 +60,7 @@ BEM的好处在于可以清晰描述被修饰者的用途且避免了样式名�
 
 当你体验过Sass作用域嵌套所带给带来的快感之后，是否对Sass能否实现BEM方法有过担心？答案是并不需要。使用`@at-root`，会使你的Sass解析成你想要的样子。
 
-{% highlight css %} 
+{% highlight scss %} 
 //Sass
 .block {
   @at-root #{&}__element {
