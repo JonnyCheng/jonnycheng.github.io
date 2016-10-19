@@ -12,7 +12,7 @@ BEM是一种方法论，通过块（Blocks）、元素（Elements）、修饰符
 
 ### 块（Block）
 
-块（Block）是一个封装好的且有独立语义或独立视觉的实体。块（Block）与块（Block）之间可以相互嵌套。
+块（Block）是一个封装好的且具有独立语义或独立视觉的实体。块（Block）与块（Block）之间可以相互嵌套。
 
 | 命名                                  | HTML | CSS         
 | 块名可由英文字母、数字、破折号（-）组成。`.block` | `<div class="block">...</div>`   | `.block { color: #042; }`
