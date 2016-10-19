@@ -2,7 +2,7 @@
 layout: post
 title:  "Express安装问题"
 date:   2015-01-01 +0800
-categories: develop
+categories: express
 ---
 之前遇到过安装完express后出现`express command not found`的情况，经过以下尝试解决了这个问题，索性就放在这吧。
 

@@ -86,7 +86,7 @@ dd {
 }
 
 ul {
-  list-style: inside circle;
+  list-style: none;
   padding-left: 0;
   
   li {
@@ -343,6 +343,9 @@ span {
     font-size: .75rem;
     text-align: center;
 }
+&-list {
+  text-indent: 2em;
+}
 }
 
 .list {
@@ -404,14 +407,14 @@ span {
 }
 .category-list-post-title a{
   color: #333;
-  text-decoration: underline;
+  font-size: 16px;
 }
 .category-list-post-title a:hover {
   color: #aaa;
-  text-decoration: underline;
+  font-size: 16px;
 }
 .category-list-post-time {
-  font-size: 18px;
+  font-size: 16px;
 }
 .next-span {
   position: relative;

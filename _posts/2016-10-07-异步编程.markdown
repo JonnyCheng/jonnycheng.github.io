@@ -1,0 +1,107 @@
+---
+layout: post
+title:  "异步编程(一)"
+date:   2016-10-07 +0800
+categories: nodejs
+---
+### 函数式编程
+
+在JavaScript中，函数作为一等公民，使用上非常自由，无论调用它或者作为参数，或者作为返回值均可。函数的灵活性是JavaScript比较吸引人的地方之一，它与古老的Lisp语言颇具渊源
+。JavaScript在诞生之前，Brendan Eich借鉴了Scheme语言，吸引了函数式编程的精华，将函数作为一等公民便是典型案例。
+
+#### 高阶函数
+
+在通常的语言中，函数的参数只接受基本的数据类型或是对象引用，返回值也只是基本数据类型和对象引用。
+
+高阶函数则是可以把函数作为参数，或是讲函数作为返回值的函数。如下代码：
+{% highlight javascript %}
+function foo(x){
+	return function(){
+	  return x;
+	};
+}
+{% endhighlight %}
+#### 偏函数用法
+
+偏函数用法是指创建一个调用另外一个部分－－－参数或变量已经预置的函数－－－的函数的用法。
+{% highlight javascript %}
+var isType = function(type){  
+	return funciton(obj){  
+		return toString.call(obj) == '[object' + 'type + ']';
+	};
+};
+{% endhighlight %}
+偏函数应用在异步编程中也十分常见，著名类库Underscore提供的after()方法即是偏函数应用，其定义如下：
+{% highlight javascript %}
+_.after = function(times,func) {
+	if(times <= 0) return func();
+	return function() {
+		if(—times < 1){return func.apply(this,argument);}
+	};
+};
+{% endhighlight %}
+### 异步编程优点与难点
+
+#### 优势
+
+Node带来的最大特性莫过于基于事件驱动的非阻塞I/O模型，这是它的灵魂所在。
+
+Node是为了解决编程模型中阻塞I/O的性能问题的，采用了单线程模型，这导致Node更像一个处理I/O密集问题的能手，而CPU密集型则取决于管家的能耐如何。
+
+C语言是能力至尊，得益于V8性能的Node则是一流武林高手，在具备武功秘籍的情况下（调用C/C++扩展模块），Node的能力可以逼近顶尖之列。
+
+由于事件循环模型需要对应海量请求，海量请求同时作用在单线程上，就需要防止任何一个计算耗费过多的CPU时间片。至于是计算密集型，还是I/O密集型，只要计算不影响异步I/O的调度，那就不构成问题。建议对CPU的耗用不要超过10ms，或者将大量的计算分解为诸多的小量计算，通过setImmediate()进行调度。只要合理利用Node的异步模型与V8的高性能，就可以充分发挥CPU和I/O资源的优势。
+
+#### 难点
+
+1.异常处理
+
+Node在处理异常上形成了一种约定，将异常作为回调函数的第一个实参传回，如果为空值，则表明异步调用没有异常抛出：
+{% highlight javascript %}
+async(function (err,results){
+	//TODO
+});
+{% endhighlight %}
+在我们自行编写的异步方法上，也需要去遵循这样一些原则：
+原则一：必须执行调用者传入的回调函数；
+原则二：正确传递回调常供调用者判断。
+
+2.函数嵌套过深
+
+对于Node而言，事物中存在多个异步调用的场景比比皆是。
+{% highlight javascript %}
+fs.readdir(path.join(__dirname,'..'),function(err,files) {
+	files.forEach(function (filename, index){
+		fs.readFile(filename,'utf8',function(err,file){
+			//TODO
+		});
+	});
+}
+{% endhighlight %}
+对于以上场景，由于两次操作存在依赖关系，函数嵌套的行为也许情有可原。那么，在网页渲染的过程中，通常需要数据、模版、资源文件，这三者互相之间并不依赖，但最终渲染的结果中三者缺一不可。
+
+3.阻塞代码
+
+JavaScript实现sleep(1000)。
+{% highlight javascript %}
+//TODO
+var start = new Date();
+while(new Date() - start < 1000){
+	//TODO
+}
+{% endhighlight %}
+//需要阻塞的代码
+
+这段代码会持续占用CPU进行判断，与真正的线程沉睡相去甚远，完全破坏了事件循环的调度。由于Node单线程的原因，CPU资源全都会用于这段代码服务，导致其余任何请求都会得不到相应。
+
+遇到这样的需求时，在统一规划业务逻辑之后，调用setTimeout()的效果会更好。
+
+4.多线程编程
+
+单一线程指的是JavaScript执行线程与UI渲染共用的一个线程。
+
+为了更好的利用多核CPU，浏览器提出了Web Workers，他通过将JavaScript执行与UI渲染分离，可以很好的利用多核CPU为大量计算服务。
+
+Web Workers解决利用CPU和减少阻塞UI渲染，但不能解决UI渲染效率问题。Node借鉴了这个模式，child_process是其基础API，cluster模块是更深层次的应用。借助Web Worker模式，开发人员要更多地去面临跨线程的编程，这对于以往的JavaScript编程经验是较少考虑的。
+
+5.异步转同步
