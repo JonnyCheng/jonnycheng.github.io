@@ -1,0 +1,201 @@
+---
+layout: post
+title:  "ng-redux快速指南"
+date:   2016-10-08 +0800
+categories: redux
+---
+
+#### 初始化
+
+允许将function或object传入`createStoreWith`。
+
+使用function：
+{% highlight javascript %}
+import reducers from './reducers';
+import { combineReducers } from 'redux';
+import loggingMiddleware from './loggingMiddleware';
+import ngRedux from 'ng-redux';
+
+angular.module('app', [ngRedux])
+.config(($ngReduxProvider) => {
+    let reducer = combineReducers(reducers);
+    $ngReduxProvider.createStoreWith(reducer, ['promiseMiddleware', loggingMiddleware]);
+  });
+{% endhighlight %}
+使用object：
+{% highlight javascript %}
+import reducers from './reducers';
+import { combineReducers } from 'redux';
+import loggingMiddleware from './loggingMiddleware';
+import ngRedux from 'ng-redux';
+import reducer3 from './reducer3';
+
+angular.module('app', [ngRedux])
+.config(($ngReduxProvider) => {
+    reducer3 = function(state, action){}
+    $ngReduxProvider.createStoreWith({
+        reducer1: "reducer1",
+        reducer2: function(state, action){},
+        reducer3: reducer3
+     }, ['promiseMiddleware', loggingMiddleware]);
+  });
+{% endhighlight %}
+例子中的reducer1将被angular的输入数据解析。
+
+#### 使用方法
+
+1.使用controllerAs语法
+{% highlight javascript %}
+import * as CounterActions from '../actions/counter';
+
+class CounterController {
+  constructor($ngRedux, $scope) {
+    /* ngRedux will merge the requested state's slice and actions onto this, 
+    you don't need to redefine them in your controller */
+
+    let unsubscribe = $ngRedux.connect(this.mapStateToThis, CounterActions)(this);
+    $scope.$on('$destroy', unsubscribe);
+  }
+
+  // Which part of the Redux global state does our component want to receive?
+  mapStateToThis(state) {
+    return {
+      value: state.counter
+    };
+  }
+}
+{% endhighlight %}
+
+{% highlight html %}
+<div>
+    <p>Clicked: {{counter.value}} times </p>
+    <button ng-click='counter.increment()'>+</button>
+    <button ng-click='counter.decrement()'>-</button>
+    <button ng-click='counter.incrementIfOdd()'>Increment if odd</button>
+    <button ng-click='counter.incrementAsync()'>Increment Async</button>
+</div>
+{% endhighlight %}
+
+#### API
+
+`createStoreWith(reducer, [middlewares], [storeEnhancers], [initialState])`
+
+创建一个Redux store，并且允许connect()访问。
+
+参数：
+
+`reducer (Function)`:所有reducers都是由单个reducer组成。（reducers由redux.combineReducer创建）
+`[middlewares] (Function[])`: 可选。一个包含了所有middleware的数组。函数与字符串都是有效成员。字符串会被Angular解析，并允许使用依赖注入到你的middlewares中。
+`[storeEnhancers] (Function[])`:可选。用来创建store，多数情况下你不需要传任何参数。
+`[initialState] (Object)`: 可选。初始化Redux store状态。
+
+`connect(mapStateToTarget, [mapDispatchToTarget])(target)`
+
+将一个Angular component连接到Redux上。
+
+参数：
+
+`mapStateToTarget (Function)`:链接会监听Redux store的更新。一旦Redux store有更新，mapStateToTarget就会被调用。结果一定是个空对象或一个函数返回的空对象，然后会被merge到target中。如果你的组件很简单，不需要任何状态，那么可以传个null给mapStateToTarget。
+
+`[mapDispatchToTarget] (Object or Function)`:可选。如果一个对象被传递后，其中每个函数将假设成一个于函数同名且绑定在 Redux store的Redux action创造器，然后合并在target中。如果一个函数被传递后，他将成为dispatch。
+
+然后你需要二次引入一个函数，可以使用target作为参数。
+
+`target (Object or Function)`:如果传递一个对象，mapStateToTarget和mapDispatchToTarget的结果会被合并到target上。如果传递一个函数，这个函数会得到mapStateToTarget和mapDispatchToTarget的结果作为参数。
+
+例子：
+{% highlight javascript %}
+connect(this.mapState, this.mapDispatch)(this);
+//Or
+connect(this.mapState, this.mapDispatch)((selectedState, actions) => {/* ... */});
+{% endhighlight %}
+
+Returns
+
+Returns一个函数允许从更深层的store更新取消订阅。
+
+摘要
+
+mapStateToTarget函数携带一个Redux store整体状态的变量，并且返回一个作为属性的对象。它通常被称为一个选择器。使用重选来高效合并选择器和计算获取的数据。你也可以选择通过mapStateToTarget函数返回状态函数的方式来实例memoization。
+
+#### Store API
+
+$ngRedux暴露了Redux store的所有方法(dispatch, subscribe and getState)。例如：
+{% highlight javascript %}
+$ngRedux.subscribe(() => {
+    let state = $ngRedux.getState();
+    //...
+})
+{% endhighlight %}
+
+这表明在一些connect API不适合的场景下，你可以自由使用Redux基本的API。
+
+#### Dependency Injectable Middleware
+
+你可以使用Angular的依赖注入机制来解决middleware中依赖注入的问题。以下定义一个factory返回一个middleware：
+{% highlight javascript %}
+function myInjectableMiddleware($http, anotherDependency) {
+    return store => next => action => {
+        //middleware's code
+    }
+}
+
+angular.factory('myInjectableMiddleware', myInjectableMiddleware);
+{% endhighlight %}
+如此简单的在store创建过程中注册你的middleware：
+
+$ngReduxProvider.createStoreWith(reducers, [thunk, 'myInjectableMiddleware']);
+
+被作为字符串传递的middleware最终通过angular的注入器解析。
+
+#### 路由
+
+参照redux-ui-router使ng-redux与UI-Router配合工作。
+参照ng-redux-router使ng-redux与angular-route配合工作。
+
+####  使用开发工具
+
+为了使用Redux开发工具，你需要安装react，react-redux和redux-devtools作为开发依赖。
+{% highlight javascript %}
+import { devTools, persistState } from 'redux-devtools';
+import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
+import React, { Component } from 'react';
+
+angular.module('app', ['ngRedux'])
+  .config(($ngReduxProvider) => {
+      $ngReduxProvider.createStoreWith(rootReducer, [thunk], [devTools()]);
+    })
+  .run(($ngRedux, $rootScope) => {
+    React.render(
+      <App store={ $ngRedux }/>,
+      document.getElementById('devTools')
+    );
+
+    //To reflect state changes when disabling/enabling actions via the monitor
+    //there is probably a smarter way to achieve that
+    $ngRedux.subscribe(_ => {
+        setTimeout($rootScope.$apply, 100);
+    });
+  });
+
+  class App extends Component {
+  render() {
+    return (
+      <div>
+        <DebugPanel top right bottom>
+          <DevTools store={ this.props.store } monitor = { LogMonitor } />
+        </DebugPanel>
+      </div>
+    );
+  }
+}
+{% endhighlight %}
+
+{% highlight html %}
+<body>
+    <div ng-app='app'>
+      [...]
+    </div>
+    <div id="devTools"></div>
+</body>
+{% endhighlight %}
