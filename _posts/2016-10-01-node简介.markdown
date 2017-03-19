@@ -2,7 +2,7 @@
 layout: post
 title:  "Node简介"
 date:   2016-10-01 +0800
-categories: nodejs
+categories: development
 ---
 由于项目重构过程中使用到Node，为了能更好的掌握Node，决定系统的了解一下node。
 

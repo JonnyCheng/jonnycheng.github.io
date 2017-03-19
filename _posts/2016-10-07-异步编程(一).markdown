@@ -2,7 +2,7 @@
 layout: post
 title:  "异步编程(一)"
 date:   2016-10-07 +0800
-categories: nodejs
+categories: development
 ---
 ### 函数式编程
 

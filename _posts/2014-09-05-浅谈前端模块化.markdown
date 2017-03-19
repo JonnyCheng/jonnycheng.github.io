@@ -2,7 +2,7 @@
 layout: post
 title:  "浅谈前端模块化"
 date:   2014-09-05 +0800
-categories: develop
+categories: development
 ---
 余闲之际写点东西，只为清晰。
 

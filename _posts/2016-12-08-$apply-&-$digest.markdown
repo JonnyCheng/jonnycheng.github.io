@@ -2,7 +2,7 @@
 layout: post
 title:  "$apply & $digest"
 date:   2016-12-08 +0800
-categories: angular
+categories: development
 ---
 
 $apply()与$digest()是AngularJS的两个核心功能。了解AngularJS的工作原理首先需要了解$apply()与$digest()是如何工作的。

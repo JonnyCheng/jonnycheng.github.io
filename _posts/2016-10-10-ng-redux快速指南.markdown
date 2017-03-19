@@ -2,7 +2,7 @@
 layout: post
 title:  "ng-redux快速指南"
 date:   2016-10-08 +0800
-categories: redux
+categories: development
 ---
 
 #### 初始化

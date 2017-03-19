@@ -2,7 +2,7 @@
 layout: post
 title:  "Angular 1.5中的生命周期"
 date:   2016-10-03 +0800
-categories: angular
+categories: development
 ---
 了解React的小伙伴对生命周期的概念都不会感到陌生，angularjs在1.5版本中也加入了生命周期，以此来过渡到angular2.0。以下简单介绍一下angular1.5中的生命周期。
 
