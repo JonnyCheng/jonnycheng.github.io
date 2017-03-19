@@ -4,7 +4,7 @@ title: 关于
 permalink: /about/
 ---
 
-I'm Jony Cheng, a software engineer in Beijing. I’ve been working on the web professionally since 2014.
+I'm Jony Cheng,a minimalist & a software engineer in Beijing. I’ve been working on the web professionally since 2014.
 
 Jony's blog is a place where I jot down the ideas I think about outside of work.
 
@@ -12,8 +12,8 @@ I prefer writing about more abstract topics, occasionally I’ll bring up a spec
 
 If you’re interested in my blog, let me know.
 
-> Facebook : [Jonny](https://www.facebook.com/michealcheng6)
+> Facebook : [Jony](https://www.facebook.com/michealcheng6)
 >
-> Instagram : [Jonny](https://www.instagram.com/jonnycheng/)
+> Instagram : [Jony](https://www.instagram.com/jonnycheng/)
 >
 > Email : jonnycheng6@gmail.com
