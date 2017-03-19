@@ -30,5 +30,3 @@ Brannan街888号，位于旧金山SOMA区。888号也曾是一栋旧仓库，但
 “Don’t Fuck Up the Culture”是Peter Thiel对这家公司的一句警示，同时也是最好的评价。
 
 最后感谢Dr. Guo的细心讲解。
-
-![airbnb](/img/airbnb3.jpg)
