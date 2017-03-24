@@ -1,8 +1,10 @@
 ---
 layout: post
-title:  "编写高效的CSS"
-date:   2014-02-05 +0800
+title: "编写高效的CSS"
+excerpt: "诚然我很少从浏览器渲染速度的角度去考虑书写CSS效率的问题。"
+date: 2014-02-05 +0800
 categories: development
+comments: true
 ---
 诚然我很少从浏览器渲染速度的角度去考虑书写CSS效率的问题。
 

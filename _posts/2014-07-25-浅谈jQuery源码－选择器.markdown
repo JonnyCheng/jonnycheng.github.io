@@ -1,8 +1,10 @@
 ---
 layout: post
 title:  "浅谈jQuery源码－选择器"
+excerpt: "无论PC端还是移动端，jQuery都长期伴随着大多数的前端开发者。简洁的对象构建方式，方便的方法调用，出色的兼容性表现决定了jQuery良好的口碑。"
 date:   2014-07-25 +0800
 categories: development
+comments: true
 ---
 无论PC端还是移动端，jQuery都长期伴随着大多数的前端开发者。简洁的对象构建方式，方便的方法调用，出色的兼容性表现决定了jQuery良好的口碑。
 

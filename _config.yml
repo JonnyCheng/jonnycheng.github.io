@@ -1,54 +1,69 @@
-# Welcome to Jekyll!
 #
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
+###################################
+# Site wide configuration
+####################################
+#
+title: Jony's blog
+email:
+description: 
+url:
 
-# Site settings
-title: Jonny Cheng
-email: jonnycheng6@gmail.com
-description: > # it is jony's blog.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://jony.im/" # the base hostname & protocol for your site
 
-# Build settings
-highlighter: rouge
-markdown: kramdown
+#
+###################################
+# Jekyll configuration
+####################################
+#
+timezone:          Asia/Beijing
+markdown:          kramdown
+highlighter:       rouge
+excerpt_separator: <!--more-->
+permalink:         /articles/:year-:month/:title
+
 kramdown:
-  input: GFM
-  auto_ids:      true
-  auto_id_prefix: 'id-'
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  enable_coderay: false
 
-# Navigation
-nav:
-  - name:           "关于"
-    href:           "/about"
-  - name:           "文章分类"
-    href:           "/category"
-# Sass
-sass:
-  style:            :compressed
-
-# Scopes
-defaults:
-  -
-    scope:
-      path:         ""
-      type:         "pages"
-    values:
-      layout:       "page"
-  -
-    scope:
-      path:         ""
-      type:         "posts"
-    values:
-      layout:       "post"
-
-# Gems
-gems: [jekyll-paginate]
-paginate: 10
-paginate_path: "/page:num"
-
-# comments
-comments: true
+#
+###################################
+# Site Owner configuration
+####################################
+#
+owner:
+  name: Jonny
+  avatar: jony.jpg
+  job: ""
+  bio: ""
+  email:
+  disqus-shortname: jonnycheng
+  twitter: #username
+  facebook: JonyCheng6
+  google:
+    plus: #username
+    analytics: UA-75222852-1
+    verify:
+    ad-client:
+    ad-slot:
+  bing-verify:
+  github: #username
+  gitlab: #username
+  stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
+  linkedin: #username
+  skype: #username
+  xing: #username
+  instagram: jonnycheng
+  lastfm: #username
+  tumblr: #username
+  pinterest: #username
+  foursquare: #username
+  steam: #username
+  dribbble: #username
+  youtube: #username
+  soundcloud: #username
+  weibo: 1905232845
+  flickr: #username
+  500px: #username
+  codepen: #username

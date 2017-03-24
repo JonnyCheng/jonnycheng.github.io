@@ -1,8 +1,10 @@
 ---
 layout: post
 title:  "谈谈BEM"
+excerpt: "命名和缓存失效是计算机科学里面最难应对的两件事。 ------ Phil Karlton"
 date:   2016-10-08 +0800
 categories: development
+comments: true
 ---
 > 命名和缓存失效是计算机科学里面最难应对的两件事。 ------ Phil Karlton
 

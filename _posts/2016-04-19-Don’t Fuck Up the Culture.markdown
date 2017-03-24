@@ -1,8 +1,10 @@
 ---
 layout: post
 title:  "Don’t Fuck Up the Culture"
+excerpt: "“Don’t fuck up the culture.“这是Peter Thiel在12年参观Airbnb办公室时说的一句话。"
 date:   2016-04-19 +0800
 categories: diary
+comments: true
 ---
 “Don’t fuck up the culture.“这是Peter Thiel在12年参观Airbnb办公室时说的一句话。
 

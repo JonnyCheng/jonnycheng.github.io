@@ -1,8 +1,10 @@
 ---
 layout: post
 title:  "浅谈前端模块化"
+excerpt: "余闲之际写点东西，只为清晰。"
 date:   2014-09-05 +0800
 categories: development
+comments: true
 ---
 余闲之际写点东西，只为清晰。
 

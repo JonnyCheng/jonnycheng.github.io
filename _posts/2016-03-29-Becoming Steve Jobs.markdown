@@ -1,8 +1,10 @@
 ---
 layout: post
 title:  "Becoming Steve Jobs"
+excerpt: "伟大的人物都是走过了荒沙大漠，才登上光荣的高峰。——【法】巴尔扎克"
 date:   2016-03-29 +0800
 categories: reading
+comments: true
 ---
 伟大的人物都是走过了荒沙大漠，才登上光荣的高峰。——【法】巴尔扎克
 
