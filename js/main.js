@@ -56,7 +56,7 @@ $(document).ready(function() {
 			},
 			"move": {
 				"enable": true,
-				"speed": 3.5,
+				"speed": 2,
 				"direction": "none",
 				"random": true,
 				"straight": false,
