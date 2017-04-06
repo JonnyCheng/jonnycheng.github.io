@@ -3,7 +3,7 @@
 # Site wide configuration
 ####################################
 #
-title: Jony's Blog
+title: Jony
 email:
 description: 
 url: http://jony.im
@@ -40,7 +40,7 @@ owner:
   email:
   disqus-shortname: jonnycheng
   twitter: #username
-  facebook: JonyCheng6
+  facebook: #username
   google:
     plus: #username
     analytics: UA-75222852-1
@@ -54,7 +54,7 @@ owner:
   linkedin: #username
   skype: #username
   xing: #username
-  instagram: jonnycheng
+  instagram: #username
   lastfm: #username
   tumblr: #username
   pinterest: #username
@@ -63,7 +63,7 @@ owner:
   dribbble: #username
   youtube: #username
   soundcloud: #username
-  weibo: 1905232845
+  weibo: #username
   flickr: #username
   500px: #username
   codepen: #username
