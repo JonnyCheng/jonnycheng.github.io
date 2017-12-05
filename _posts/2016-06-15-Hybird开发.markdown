@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "浅谈Hybird开发"
+title:  "Hybird开发"
 excerpt: "考虑到成本，团队成员，技术成熟度，时间，项目需求等多维因素。在追求开发效率与高性能这条本身互斥的道路上，我们还有很长的路要走。"
 date:   2016-06-15 +0800
 categories: development
