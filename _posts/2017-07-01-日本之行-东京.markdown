@@ -1,9 +1,9 @@
 ---
 layout: post
 title:  "日本之行-东京"
-excerpt: "日本回忆"
+excerpt: "日本记忆"
 date:   2017-07-01 +0800
-categories: travel
+categories: travelling
 comments: true
 ---
 近两年我去了不同的国家旅行，虽然旅行是短暂的，但也真切地体会到了不同文化之下的不同世界。
