@@ -6,7 +6,7 @@ date:   2017-12-01 +0800
 categories: travelling
 comments: true
 ---
-![avatar](../img/guam.jpg)
+![avatar](/img/guam.jpg)
 
 作为一个对历史感兴趣的人，我对太平洋战争一直有着浓厚的兴趣。关岛作为一处战略要地，无论战时还是和平年代都是西太平洋上不可小视的存在。除此以外，美丽的景色宜人的天气也是海岛度假的首选。
 
