@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "我的2017年度读书报告"
-excerpt: " "
+excerpt: "刚过去的2017年，阅读依旧陪伴着我的生活。"
 date:   2018-01-09 +0800
 categories: reading
 comments: true
