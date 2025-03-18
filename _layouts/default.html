@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
-{% include head.html %}
+  {%- include head.html -%}
 
-<body>
-  <div class="row">
-    <div class="col s12 m3">
-      {% include sidebar.html %}
-      <div class="cover" id="particles-js">
-      </div>
-    </div>
-    <div class="col s12 m9">
-      <div class="post-listing">
+  <body>
+
+    {%- include views/header.html -%}
+
+    {%- include views/banner.html -%}
+
+    {%- include extensions/hashlocate.html -%}
+
+    {%- include extensions/theme-toggle.html -%}
+
+    {%- include extensions/click-to-top.html -%}
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
         {{ content }}
-        {% include footer.html %}
       </div>
-    </div>
-  </div>
-  {% include js.html %}
-</body>
+    </main>
+
+    {%- include views/footer.html -%}
+
+  </body>
 </html>
