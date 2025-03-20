@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Herbal Energy Healing Craft Program'
+title: 'Chinese Incense Ceremony'
 categories: program
 author: 'IACA'
 meta: 'Springfield'
