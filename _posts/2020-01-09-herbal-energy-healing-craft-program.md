@@ -24,21 +24,39 @@ In the midst of fast-paced urban life, we create a green oasis where you can slo
 
 1. Herbal Energy Candles (Botanical wax blends with natural essences)
 
+   ![Herbal Energy Candles](/assets/images/DSCF0070.jpg){: width="300" height="300"}
+
 2. Sacred Plant Purification Smudge Sticks (Ethically harvested herb bundles)
+
+   ![Sacred Plant Purification Smudge Sticks](/assets/images/DSCF0088.jpg){: width="300" height="300"}
 
 3. Botanical Energy-Infused Ritual Oils (Solar-charged herbal synergies)
 
+   ![Botanical Energy-Infused Ritual Oils](/assets/images/DSCF0191.jpg){: width="300" height="300"}
+
 4. Plant-Based Hand-Rolled Incense Sticks (100% natural resin & herb formulas)
+
+   ![Plant-Based Hand-Rolled Incense Sticks](/assets/images/DSCF0111.jpg){: width="300" height="300"}
 
 5. Botanical Hand-Pressed Cone Incense (Earth-friendly ceremonial blends)
 
+   ![Botanical Hand-Pressed Cone Incense](/assets/images/DSCF0134.jpg){: width="300" height="300"}
+
 6. Herbal Aroma Ornaments (Decorative smudging pendants with crystals)
+
+   ![Herbal Aroma Ornaments](/assets/images/DSCF1847.jpg){: width="300" height="300"}
 
 7. Crystal Chakra Anointing Oils (Gemstone-infused energy elixirs)
 
+   ![Crystal Chakra Anointing Oils](/assets/images/DSCF0212.jpg){: width="300" height="300"}
+
 8. Sacred Herbal Palo Santo Blends (Sustainable holy wood incense)
 
+   ![Sacred Herbal Palo Santo Blends](/assets/images/DSCF0118.jpg){: width="300" height="300"}
+
 9. Botanical Energy Bath Rituals (Herbal mineral soak spheres)
+
+   ![Botanical Energy Bath Rituals](/assets/images/DSCF0221.jpg){: width="300" height="300"}
 
 ## Course Highlights
 
